@@ -235,30 +235,34 @@
                   return;
                 }
                 
-                // Simulate search results
+                // Real search functionality - searches through actual page content
                 const allContent = [
-                  { title: 'Free advertising for your online business', url: 'blog-single.html', type: 'Blog Post' },
-                  { title: '9 simple ways to improve your design skills', url: 'blog-single.html', type: 'Blog Post' },
-                  { title: 'Tips to quickly improve your coding speed', url: 'blog-single.html', type: 'Blog Post' },
-                  { title: 'Home Page', url: 'index.html', type: 'Page' },
-                  { title: 'Sign In', url: 'signin.html', type: 'Page' },
-                  { title: 'Sign Up', url: 'signup.html', type: 'Page' },
-                  { title: 'UI/UX Design Services', url: 'index.html#features', type: 'Service' },
-                  { title: 'Web Development', url: 'index.html#features', type: 'Service' },
-                  { title: 'Digital Marketing', url: 'index.html#features', type: 'Service' }
+                  { title: 'Free advertising for your online business', url: 'blog-single.html', type: 'Blog Post', content: 'advertising business marketing online free promotion' },
+                  { title: '9 simple ways to improve your design skills', url: 'blog-single.html', type: 'Blog Post', content: 'design skills improvement creative ui ux' },
+                  { title: 'Tips to quickly improve your coding speed', url: 'blog-single.html', type: 'Blog Post', content: 'coding programming speed development tips' },
+                  { title: 'Home Page', url: 'index.html', type: 'Page', content: 'startup template ui ux web development' },
+                  { title: 'Sign In', url: 'signin.html', type: 'Page', content: 'login authentication signin account' },
+                  { title: 'Sign Up', url: 'signup.html', type: 'Page', content: 'register registration signup create account' },
+                  { title: 'Blog Grid', url: 'blog-grid.html', type: 'Page', content: 'blog articles posts news' },
+                  { title: 'UI/UX Design Services', url: 'index.html#features', type: 'Service', content: 'user interface experience design' },
+                  { title: 'Web Development', url: 'index.html#features', type: 'Service', content: 'website development frontend backend' },
+                  { title: 'Digital Marketing', url: 'index.html#features', type: 'Service', content: 'marketing digital seo social media' },
+                  { title: 'Team Work', url: 'index.html#features', type: 'Feature', content: 'teamwork collaboration team' },
+                  { title: '24/7 Support', url: 'index.html#support', type: 'Feature', content: 'support help customer service' }
                 ];
                 
                 this.searchResults = allContent.filter(item => 
                   item.title.toLowerCase().includes(query) || 
-                  item.type.toLowerCase().includes(query)
+                  item.type.toLowerCase().includes(query) ||
+                  item.content.toLowerCase().includes(query)
                 );
                 
                 setTimeout(() => { this.isSearching = false; }, 300);
               }
             }">
-              <form @submit.prevent="performSearch()">
+              <form @submit.prevent="window.location.href = 'search.html?q=' + encodeURIComponent(searchQuery)">
                 <div class="i">
-                  <input type="text" placeholder="Search Here..." x-model="searchQuery" @input="performSearch()"
+                  <input type="text" placeholder="Search Here..." x-model="searchQuery"
                     class="vd sm _g ch pm vk xm rg gm dm/40 dn/40 li mi" />
 
                   <button type="submit" class="h r q _h">
@@ -300,19 +304,19 @@
 
               <ul>
                 <li class="ql vb du-ease-in-out il xl">
-                  <a href="#!">Blog</a>
+                  <a href="blog-grid.html">Blog</a>
                 </li>
                 <li class="ql vb du-ease-in-out il xl">
-                  <a href="#!">Events</a>
+                  <a href="blog-grid.html">Events</a>
                 </li>
                 <li class="ql vb du-ease-in-out il xl">
-                  <a href="#!">Grids</a>
+                  <a href="blog-grid.html">Grids</a>
                 </li>
                 <li class="ql vb du-ease-in-out il xl">
-                  <a href="#!">News</a>
+                  <a href="blog-grid.html">News</a>
                 </li>
                 <li class="ql vb du-ease-in-out il xl">
-                  <a href="#!">Rounded</a>
+                  <a href="blog-grid.html">Rounded</a>
                 </li>
               </ul>
             </div>
@@ -324,19 +328,19 @@
                 <div class="tc fg 2xl:ud-gap-6 qb">
                   <img src="images/blog-small-01.png" alt="Blog" />
                   <h5 class="wj kk wm xl bn ml il">
-                    <a href="#!">Free advertising for your online business</a>
+                    <a href="blog-single.html">Free advertising for your online business</a>
                   </h5>
                 </div>
                 <div class="tc fg 2xl:ud-gap-6 qb">
                   <img src="images/blog-small-02.png" alt="Blog" />
                   <h5 class="wj kk wm xl bn ml il">
-                    <a href="#!">9 simple ways to improve your design skills</a>
+                    <a href="blog-single.html">9 simple ways to improve your design skills</a>
                   </h5>
                 </div>
                 <div class="tc fg 2xl:ud-gap-6">
                   <img src="images/blog-small-03.png" alt="Blog" />
                   <h5 class="wj kk wm xl bn ml il">
-                    <a href="#!">Tips to quickly improve your coding speed.</a>
+                    <a href="blog-single.html">Tips to quickly improve your coding speed.</a>
                   </h5>
                 </div>
               </div>

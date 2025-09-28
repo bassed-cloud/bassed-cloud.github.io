@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search | Base - Tailwind CSS Startup Template</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body x-data="{ page: 'search', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+  <!-- ===== Header Start ===== -->
+  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+    @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
+    <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+      <div class="vd to/4 tc wf yf">
+        <a href="index.html">
+          <img class="om" src="images/logo-light.svg" alt="Logo Light" />
+          <img class="xc nm" src="images/logo-dark.svg" alt="Logo Dark" />
+        </a>
+
+        <!-- Hamburger Toggle BTN -->
+        <button class="po rc" @click="navigationOpen = !navigationOpen">
+          <span class="rc i pf re pd">
+            <span class="du-block h q vd yc">
+              <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+            </span>
+            <span class="du-block h q vd yc lf">
+              <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+              <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+            </span>
+          </span>
+        </button>
+        <!-- Hamburger Toggle BTN -->
+      </div>
+
+      <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+        <nav>
+          <ul class="tc _o sf yo cg ep">
+            <li><a href="index.html" class="xl">Home</a></li>
+            <li><a href="index.html#features" class="xl">Features</a></li>
+            <li class="c i" x-data="{ dropdown: false }">
+              <a href="javascript:void(0)" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
+                Pages
+                <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Start -->
+              <ul class="a" :class="{ 'tc': dropdown }">
+                <li><a href="blog-grid.html" class="xl">Blog Grid</a></li>
+                <li><a href="blog-single.html" class="xl">Blog Single</a></li>
+                <li><a href="signin.html" class="xl">Sign In</a></li>
+                <li><a href="signup.html" class="xl">Sign Up</a></li>
+                <li><a href="404.html" class="xl">404</a></li>
+              </ul>
+              <!-- Dropdown End -->
+            </li>
+            <li><a href="index.html#support" class="xl">Support</a></li>
+          </ul>
+        </nav>
+
+        <div class="tc wf ig pb no">
+          <a href="signin.html" class="ek pk xl">Sign In</a>
+          <a href="signup.html" class="lk gh dk rg tc wf xf _l gi hi">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Header End ===== -->
+
+  <main>
+    <!-- ===== Search Start ===== -->
+    <section class="gj qp gr hj rp hr">
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <div class="tc sf yo zf kq">
+          <div class="animate_top">
+            <h1 class="ek vj pr kk wm nb gb mb-8">Search Results</h1>
+            
+            <div x-data="{ 
+              searchQuery: new URLSearchParams(window.location.search).get('q') || '', 
+              searchResults: [],
+              isSearching: false,
+              
+              performSearch() {
+                this.isSearching = true;
+                const query = this.searchQuery.toLowerCase().trim();
+                
+                if (query === '') {
+                  this.searchResults = [];
+                  this.isSearching = false;
+                  return;
+                }
+                
+                const allContent = [
+                  { title: 'Home Page', url: 'index.html', type: 'Page', description: 'Main landing page with startup template features, UI/UX design, and web development services.' },
+                  { title: 'Blog Grid', url: 'blog-grid.html', type: 'Page', description: 'Browse all blog posts in a grid layout with pagination.' },
+                  { title: 'Blog Single', url: 'blog-single.html', type: 'Page', description: 'Read individual blog posts with comments and related articles.' },
+                  { title: 'Sign In', url: 'signin.html', type: 'Page', description: 'User authentication and login page.' },
+                  { title: 'Sign Up', url: 'signup.html', type: 'Page', description: 'User registration and account creation page.' },
+                  { title: 'Free advertising for your online business', url: 'blog-single.html', type: 'Blog Post', description: 'Learn effective strategies for promoting your business online without spending money.' },
+                  { title: '9 simple ways to improve your design skills', url: 'blog-single.html', type: 'Blog Post', description: 'Practical tips and techniques to enhance your design abilities and creativity.' },
+                  { title: 'Tips to quickly improve your coding speed', url: 'blog-single.html', type: 'Blog Post', description: 'Programming techniques and practices to write code faster and more efficiently.' },
+                  { title: 'UI/UX Design Services', url: 'index.html#features', type: 'Service', description: 'Professional user interface and user experience design services.' },
+                  { title: 'Web Development', url: 'index.html#features', type: 'Service', description: 'Custom website and web application development solutions.' },
+                  { title: 'Digital Marketing', url: 'index.html#features', type: 'Service', description: 'Online marketing strategies including SEO, social media, and content marketing.' },
+                  { title: '24/7 Support', url: 'index.html#support', type: 'Feature', description: 'Round-the-clock customer support and assistance.' },
+                  { title: 'Team Work', url: 'index.html#features', type: 'Feature', description: 'Collaborative team environments and project management.' }
+                ];
+                
+                this.searchResults = allContent.filter(item => 
+                  item.title.toLowerCase().includes(query) || 
+                  item.type.toLowerCase().includes(query) ||
+                  item.description.toLowerCase().includes(query)
+                );
+                
+                // Update URL with search query
+                const newUrl = new URL(window.location);
+                newUrl.searchParams.set('q', this.searchQuery);
+                window.history.replaceState({}, '', newUrl);
+                
+                setTimeout(() => { this.isSearching = false; }, 300);
+              }
+            }" x-init="performSearch()">
+              
+              <!-- Search Form -->
+              <form @submit.prevent="performSearch()" class="mb-8">
+                <div class="i max-w-2xl mx-auto">
+                  <input type="text" x-model="searchQuery" @input="performSearch()" 
+                    placeholder="Search for content, pages, or services..." 
+                    class="vd sm _g ch pm vk xm rg gm dm dn gi mi text-lg py-4" />
+                  <button type="submit" class="h r q _h">
+                    <svg class="th ul ml il" width="21" height="21" viewBox="0 0 21 21" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.031 14.617L20.314 18.899L18.899 20.314L14.617 16.031C13.0237 17.3082 11.042 18.0029 9 18C4.032 18 0 13.968 0 9C0 4.032 4.032 0 9 0C13.968 0 18 4.032 18 9C18.0029 11.042 17.3082 13.0237 16.031 14.617ZM14.025 13.875C15.2941 12.5699 16.0029 10.8204 16 9C16 5.132 12.867 2 9 2C5.132 2 2 5.132 2 9C2 12.867 5.132 16 9 16C10.8204 16.0029 12.5699 15.2941 13.875 14.025L14.025 13.875Z" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              
+              <!-- Search Results -->
+              <div class="bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-6">
+                
+                <!-- Loading State -->
+                <div x-show="isSearching" class="text-center py-8">
+                  <span class="text-gray-500">Searching...</span>
+                </div>
+                
+                <!-- No Query -->
+                <div x-show="!isSearching && searchQuery.length === 0" class="text-center py-8">
+                  <span class="text-gray-500">Enter a search term to find content</span>
+                </div>
+                
+                <!-- No Results -->
+                <div x-show="!isSearching && searchResults.length === 0 && searchQuery.length > 0" class="text-center py-8">
+                  <span class="text-gray-500">No results found for "<span x-text="searchQuery"></span>"</span>
+                </div>
+                
+                <!-- Results -->
+                <div x-show="!isSearching && searchResults.length > 0">
+                  <h3 class="font-semibold text-lg mb-4">
+                    Found <span x-text="searchResults.length"></span> result(s) for "<span x-text="searchQuery"></span>"
+                  </h3>
+                  
+                  <template x-for="result in searchResults" :key="result.url">
+                    <div class="border-b border-gray-200 dark:border-gray-700 py-4 last:border-b-0">
+                      <a :href="result.url" class="block hover:text-blue-600 dark:hover:text-blue-400">
+                        <h4 class="font-medium text-lg mb-1" x-text="result.title"></h4>
+                        <span class="text-sm text-blue-600 dark:text-blue-400 mb-2 inline-block" x-text="result.type"></span>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" x-text="result.description"></p>
+                      </a>
+                    </div>
+                  </template>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Search End ===== -->
+  </main>
+
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <!-- Footer Top -->
+      <div class="ji gp">
+        <div class="tc uf ap gg fp">
+          <div class="animate_top zd/2 to/4">
+            <a href="index.html">
+              <img src="images/logo-light.svg" alt="Logo" class="om" />
+              <img src="images/logo-dark.svg" alt="Logo" class="xc nm" />
+            </a>
+
+            <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+
+          <div class="vd ro tc sf rn un gg vn">
+            <div class="animate_top">
+              <h4 class="kk wm tj ec">Quick Links</h4>
+
+              <ul>
+                <li><a href="index.html" class="sc xl vb">Home</a></li>
+                <li><a href="#features" class="sc xl vb">Features</a></li>
+                <li><a href="blog-grid.html" class="sc xl vb">Blog</a></li>
+                <li><a href="index.html#support" class="sc xl vb">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Top -->
+
+      <!-- Footer Bottom -->
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+        <div class="animate_top">
+          <p>&copy; 2025 Base. All rights reserved.</p>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+    </div>
+  </footer>
+
+  <!-- ===== Footer End ===== -->
+  <script defer src="bundle.js"></script>
+</body>
+
+</html>
