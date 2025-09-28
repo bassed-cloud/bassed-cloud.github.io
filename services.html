@@ -47,9 +47,11 @@
         <nav>
           <ul class="tc _o sf yo cg ep">
             <li><a href="index.html" class="xl">Home</a></li>
-            <li><a href="index.html#features" class="xl">Features</a></li>
+            <li><a href="features.html" class="xl">Features</a></li>
+            <li><a href="about.html" class="xl">About</a></li>
+            <li><a href="services.html" class="xl" :class="{ 'mk': page === 'services' }">Services</a></li>
             <li class="c i" x-data="{ dropdown: false }">
-              <a href="javascript:void(0)" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
+              <a href="#" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
                 Pages
                 <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512">
@@ -68,8 +70,7 @@
               </ul>
               <!-- Dropdown End -->
             </li>
-            <li><a href="services.html" class="xl" :class="{ 'mk': page === 'services' }">Services</a></li>
-            <li><a href="index.html#support" class="xl">Support</a></li>
+            <li><a href="contact.html" class="xl">Contact</a></li>
           </ul>
         </nav>
 
@@ -165,7 +166,7 @@
                 <li><a href="index.html" class="sc xl vb">Home</a></li>
                 <li><a href="about.html" class="sc xl vb">About</a></li>
                 <li><a href="services.html" class="sc xl vb">Services</a></li>
-                <li><a href="index.html#support" class="sc xl vb">Contact</a></li>
+                <li><a href="contact.html" class="sc xl vb">Contact</a></li>
               </ul>
             </div>
           </div>
