@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product | Base - Tailwind CSS Startup Template</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body x-data="{ page: 'product', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+  <!-- ===== Header Start ===== -->
+  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+    @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
+    <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+      <div class="vd to/4 tc wf yf">
+        <a href="index.html">
+          <img class="om" src="images/logo-light.svg" alt="Logo Light" />
+          <img class="xc nm" src="images/logo-dark.svg" alt="Logo Dark" />
+        </a>
+
+        <!-- Hamburger Toggle BTN -->
+        <button class="po rc" @click="navigationOpen = !navigationOpen">
+          <span class="rc i pf re pd">
+            <span class="du-block h q vd yc">
+              <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+            </span>
+            <span class="du-block h q vd yc lf">
+              <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+              <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+            </span>
+          </span>
+        </button>
+        <!-- Hamburger Toggle BTN -->
+      </div>
+
+      <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+        <nav>
+          <ul class="tc _o sf yo cg ep">
+            <li><a href="index.html" class="xl">Home</a></li>
+            <li><a href="features.html" class="xl">Features</a></li>
+            <li><a href="about.html" class="xl">About</a></li>
+            <li><a href="services.html" class="xl">Services</a></li>
+            <li class="c i" x-data="{ dropdown: false }">
+              <a href="#" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
+                Pages
+                <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Start -->
+              <ul class="a" :class="{ 'tc': dropdown }">
+                <li><a href="blog-grid.html" class="xl">Blog Grid</a></li>
+                <li><a href="blog-single.html" class="xl">Blog Single</a></li>
+                <li><a href="signin.html" class="xl">Sign In</a></li>
+                <li><a href="signup.html" class="xl">Sign Up</a></li>
+                <li><a href="404.html" class="xl">404</a></li>
+              </ul>
+              <!-- Dropdown End -->
+            </li>
+            <li><a href="contact.html" class="xl">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="tc wf ig pb no">
+          <a href="signin.html" class="ek pk xl">Sign In</a>
+          <a href="signup.html" class="lk gh dk rg tc wf xf _l gi hi">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Header End ===== -->
+
+  <main>
+    <!-- ===== Product Start ===== -->
+    <section class="gj qp gr hj rp hr">
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <div class="tc sf yo zf kq">
+          <div class="animate_top">
+            <h1 class="ek vj pr kk wm nb gb mb-8">Our Products</h1>
+            <p class="bb on/5 wo/5 hq">Discover our range of innovative solutions designed to help your business grow and succeed in today's competitive market.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+            <!-- Product 1 -->
+            <div class="animate_top bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+              <div class="mb-6">
+                <svg class="w-12 h-12 text-primary mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                  <path d="M2 17L12 22L22 17"></path>
+                  <path d="M2 12L12 17L22 12"></path>
+                </svg>
+              </div>
+              <h3 class="ek vj kk wm nb qb">Web Development Platform</h3>
+              <p class="mb-6">Complete web development solution with modern frameworks and tools.</p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> React & Vue.js Support</li>
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Cloud Deployment</li>
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> 24/7 Support</li>
+              </ul>
+              <a href="contact.html" class="ek rg lk ml il gi ri">Learn More</a>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="animate_top bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+              <div class="mb-6">
+                <svg class="w-12 h-12 text-primary mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 19C6.24 19 4 16.76 4 14S6.24 9 9 9 14 11.24 14 14 11.76 19 9 19M9 11C7.34 11 6 12.34 6 14S7.34 17 9 17 12 15.66 12 14 10.66 11 9 11M15 4C18.87 4 22 7.13 22 11C22 14.87 18.87 18 15 18V16C17.76 16 20 13.76 20 11S17.76 6 15 6V4M15 8V12L19 16H17L15 14V8Z"></path>
+                </svg>
+              </div>
+              <h3 class="ek vj kk wm nb qb">Analytics Dashboard</h3>
+              <p class="mb-6">Advanced analytics and reporting tools for data-driven decisions.</p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Real-time Analytics</li>
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Custom Reports</li>
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Data Export</li>
+              </ul>
+              <a href="contact.html" class="ek rg lk ml il gi ri">Learn More</a>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="animate_top bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+              <div class="mb-6">
+                <svg class="w-12 h-12 text-primary mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1M12 7C13.4 7 14.8 8.6 14.8 10V11.5C15.4 11.5 16 12.1 16 12.7V16.8C16 17.4 15.4 18 14.8 18H9.2C8.6 18 8 17.4 8 16.8V12.7C8 12.1 8.6 11.5 9.2 11.5V10C9.2 8.6 10.6 7 12 7M12 8.2C11.2 8.2 10.5 8.7 10.5 10V11.5H13.5V10C13.5 8.7 12.8 8.2 12 8.2Z"></path>
+                </svg>
+              </div>
+              <h3 class="ek vj kk wm nb qb">Security Suite</h3>
+              <p class="mb-6">Comprehensive security solutions to protect your digital assets.</p>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Advanced Encryption</li>
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Threat Detection</li>
+                <li class="flex items-center"><span class="text-primary mr-2">✓</span> Compliance Tools</li>
+              </ul>
+              <a href="contact.html" class="ek rg lk ml il gi ri">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Product End ===== -->
+  </main>
+
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <!-- Footer Top -->
+      <div class="vd ro tc sf rn un gg vn">
+        <div class="animate_top">
+          <h4 class="kk wm tj ec">Quick Links</h4>
+
+          <ul>
+            <li><a href="index.html" class="sc xl vb">Home</a></li>
+            <li><a href="product.html" class="sc xl vb">Product</a></li>
+            <li><a href="careers.html" class="sc xl vb">Careers</a></li>
+            <li><a href="pricing.html" class="sc xl vb">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <h4 class="kk wm tj ec">Services</h4>
+
+          <ul>
+            <li><a href="services.html" class="sc xl vb">Web Development</a></li>
+            <li><a href="services.html" class="sc xl vb">Graphics Design</a></li>
+            <li><a href="services.html" class="sc xl vb">Digital Marketing</a></li>
+            <li><a href="services.html" class="sc xl vb">Ui/Ux Design</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <h4 class="kk wm tj ec">Support</h4>
+
+          <ul>
+            <li><a href="about.html" class="sc xl vb">Company</a></li>
+            <li><a href="blog-grid.html" class="sc xl vb">Press media</a></li>
+            <li><a href="blog-grid.html" class="sc xl vb">Our Blog</a></li>
+            <li><a href="contact.html" class="sc xl vb">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Footer Top -->
+
+      <!-- Footer Bottom -->
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+        <div class="animate_top">
+          <ul class="tc wf gg">
+            <li><a href="index.html" class="xl">English</a></li>
+            <li><a href="privacy-policy.html" class="xl">Privacy Policy</a></li>
+            <li><a href="contact.html" class="xl">Support</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <p>&copy; 2025 Base. All rights reserved.</p>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+    </div>
+  </footer>
+
+  <!-- ===== Footer End ===== -->
+
+  <script defer src="bundle.js"></script>
+</body>
+
+</html>

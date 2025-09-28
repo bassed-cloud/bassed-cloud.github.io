@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started | Base - Tailwind CSS Startup Template</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body x-data="{ page: 'get-started', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+  <!-- ===== Header Start ===== -->
+  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+    @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
+    <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+      <div class="vd to/4 tc wf yf">
+        <a href="index.html">
+          <img class="om" src="images/logo-light.svg" alt="Logo Light" />
+          <img class="xc nm" src="images/logo-dark.svg" alt="Logo Dark" />
+        </a>
+
+        <!-- Hamburger Toggle BTN -->
+        <button class="po rc" @click="navigationOpen = !navigationOpen">
+          <span class="rc i pf re pd">
+            <span class="du-block h q vd yc">
+              <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+            </span>
+            <span class="du-block h q vd yc lf">
+              <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+              <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+            </span>
+          </span>
+        </button>
+        <!-- Hamburger Toggle BTN -->
+      </div>
+
+      <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+        <nav>
+          <ul class="tc _o sf yo cg ep">
+            <li><a href="index.html" class="xl">Home</a></li>
+            <li><a href="features.html" class="xl">Features</a></li>
+            <li><a href="about.html" class="xl">About</a></li>
+            <li><a href="services.html" class="xl">Services</a></li>
+            <li class="c i" x-data="{ dropdown: false }">
+              <a href="#" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
+                Pages
+                <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Start -->
+              <ul class="a" :class="{ 'tc': dropdown }">
+                <li><a href="blog-grid.html" class="xl">Blog Grid</a></li>
+                <li><a href="blog-single.html" class="xl">Blog Single</a></li>
+                <li><a href="signin.html" class="xl">Sign In</a></li>
+                <li><a href="signup.html" class="xl">Sign Up</a></li>
+                <li><a href="404.html" class="xl">404</a></li>
+              </ul>
+              <!-- Dropdown End -->
+            </li>
+            <li><a href="contact.html" class="xl">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="tc wf ig pb no">
+          <a href="signin.html" class="ek pk xl">Sign In</a>
+          <a href="signup.html" class="lk gh dk rg tc wf xf _l gi hi">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Header End ===== -->
+
+  <main>
+    <!-- ===== Get Started Start ===== -->
+    <section class="gj qp gr hj rp hr">
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <div class="animate_top bb ze rj ki xn vq">
+          <h1 class="fk vj pr kk wm nb gb">Get Started with Base</h1>
+          <p class="bb on/5 wo/5 hq">Start your journey with our startup template and build amazing projects.</p>
+        </div>
+
+        <div class="tc wf gg qq">
+          <!-- Get Started Content -->
+          <div class="animate_top bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+            
+            <h2 class="ek vj kk wm qb">Choose Your Plan</h2>
+            <p class="mb-6">Select the perfect plan for your needs and start building today.</p>
+            
+            <div class="wc qf pn xo jg">
+              <!-- Basic Plan -->
+              <div class="sg oi pi zq ml il am cn _m">
+                <h3 class="ek zj kk wm nb _b">Starter Plan</h3>
+                <div class="tc wf xf kg cc mb-4">
+                  <h2 class="fk _j kk wm">$29</h2>
+                  <span class="sc ak kk wm">/per month</span>
+                </div>
+                <ul class="tc sf bg ob fb mb-6">
+                  <li>✓ 5 Projects</li>
+                  <li>✓ Basic Support</li>
+                  <li>✓ Standard Templates</li>
+                  <li>✓ Community Access</li>
+                </ul>
+                <a href="signup.html" class="ek rg lk ml il gi ri">Get Started</a>
+              </div>
+
+              <!-- Pro Plan -->
+              <div class="sg oi pi zq ml il am cn _m">
+                <h3 class="ek zj kk wm nb _b">Pro Plan</h3>
+                <div class="tc wf xf kg cc mb-4">
+                  <h2 class="fk _j kk wm">$59</h2>
+                  <span class="sc ak kk wm">/per month</span>
+                </div>
+                <ul class="tc sf bg ob fb mb-6">
+                  <li>✓ Unlimited Projects</li>
+                  <li>✓ Priority Support</li>
+                  <li>✓ Premium Templates</li>
+                  <li>✓ Advanced Features</li>
+                </ul>
+                <a href="signup.html" class="ek rg gh sl ml il gi hi">Get Started</a>
+              </div>
+
+              <!-- Enterprise Plan -->
+              <div class="sg oi pi zq ml il am cn _m">
+                <h3 class="ek zj kk wm nb _b">Enterprise</h3>
+                <div class="tc wf xf kg cc mb-4">
+                  <h2 class="fk _j kk wm">$139</h2>
+                  <span class="sc ak kk wm">/per month</span>
+                </div>
+                <ul class="tc sf bg ob fb mb-6">
+                  <li>✓ Everything in Pro</li>
+                  <li>✓ Custom Development</li>
+                  <li>✓ Dedicated Support</li>
+                  <li>✓ Team Collaboration</li>
+                </ul>
+                <a href="signup.html" class="ek rg lk ml il gi ri">Contact Sales</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Get Started End ===== -->
+  </main>
+
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <!-- Footer Top -->
+      <div class="ji gp">
+        <div class="tc uf ap gg fp">
+          <div class="animate_top zd/2 to/4">
+            <a href="index.html">
+              <img src="images/logo-light.svg" alt="Logo" class="om" />
+              <img src="images/logo-dark.svg" alt="Logo" class="xc nm" />
+            </a>
+
+            <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+
+          <div class="vd ro tc sf rn un gg vn">
+            <div class="animate_top">
+              <h4 class="kk wm tj ec">Quick Links</h4>
+
+              <ul>
+                <li><a href="index.html" class="sc xl vb">Home</a></li>
+                <li><a href="about.html" class="sc xl vb">About</a></li>
+                <li><a href="services.html" class="sc xl vb">Services</a></li>
+                <li><a href="index.html#support" class="sc xl vb">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Top -->
+
+      <!-- Footer Bottom -->
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+        <div class="animate_top">
+          <p>&copy; 2025 Base. All rights reserved.</p>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+    </div>
+  </footer>
+
+  <!-- ===== Footer End ===== -->
+  <script defer src="bundle.js"></script>
+</body>
+
+</html>

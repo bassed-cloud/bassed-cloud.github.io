@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features | Base - Tailwind CSS Startup Template</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body x-data="{ page: 'features', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+  <!-- ===== Header Start ===== -->
+  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+    @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
+    <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+      <div class="vd to/4 tc wf yf">
+        <a href="index.html">
+          <img class="om" src="images/logo-light.svg" alt="Logo Light" />
+          <img class="xc nm" src="images/logo-dark.svg" alt="Logo Dark" />
+        </a>
+
+        <!-- Hamburger Toggle BTN -->
+        <button class="po rc" @click="navigationOpen = !navigationOpen">
+          <span class="rc i pf re pd">
+            <span class="du-block h q vd yc">
+              <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+            </span>
+            <span class="du-block h q vd yc lf">
+              <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+              <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+            </span>
+          </span>
+        </button>
+        <!-- Hamburger Toggle BTN -->
+      </div>
+
+      <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+        <nav>
+          <ul class="tc _o sf yo cg ep">
+            <li><a href="index.html" class="xl">Home</a></li>
+            <li><a href="features.html" class="xl" :class="{ 'mk': page === 'features' }">Features</a></li>
+            <li><a href="about.html" class="xl">About</a></li>
+            <li><a href="services.html" class="xl">Services</a></li>
+            <li class="c i" x-data="{ dropdown: false }">
+              <a href="#" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
+                Pages
+                <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Start -->
+              <ul class="a" :class="{ 'tc': dropdown }">
+                <li><a href="blog-grid.html" class="xl">Blog Grid</a></li>
+                <li><a href="blog-single.html" class="xl">Blog Single</a></li>
+                <li><a href="signin.html" class="xl">Sign In</a></li>
+                <li><a href="signup.html" class="xl">Sign Up</a></li>
+                <li><a href="404.html" class="xl">404</a></li>
+              </ul>
+              <!-- Dropdown End -->
+            </li>
+            <li><a href="contact.html" class="xl">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="tc wf ig pb no">
+          <a href="signin.html" class="ek pk xl">Sign In</a>
+          <a href="signup.html" class="lk gh dk rg tc wf xf _l gi hi">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Header End ===== -->
+
+  <main>
+    <!-- ===== Features Start ===== -->
+    <section class="gj qp gr hj rp hr">
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <div class="animate_top bb ze rj ki xn vq">
+          <h1 class="fk vj pr kk wm nb gb">Our Features</h1>
+          <p class="bb on/5 wo/5 hq">Discover the powerful features that make our platform the perfect choice for your business needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Small Features Start ===== -->
+    <section class="ji gp uq">
+      <div class="bb ze ki yn 2xl:ud-px-12.5">
+        <div class="tc uf zo xf ap zf bp mq">
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg mh">
+              <img src="images/icon-01.svg" alt="Icon" />
+            </div>
+            <div>
+              <h4 class="ek yj go kk wm xb">24/7 Support</h4>
+              <p>Get round-the-clock support from our dedicated team. We're here to help you succeed with immediate assistance whenever you need it.</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg nh">
+              <img src="images/icon-02.svg" alt="Icon" />
+            </div>
+            <div>
+              <h4 class="ek yj go kk wm xb">Take Ownership</h4>
+              <p>Full control and ownership of your projects. Customize, modify, and scale your solutions according to your specific business requirements.</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg oh">
+              <img src="images/icon-03.svg" alt="Icon" />
+            </div>
+            <div>
+              <h4 class="ek yj go kk wm xb">Team Work</h4>
+              <p>Collaborative tools and features designed for team productivity. Work together seamlessly with advanced collaboration features.</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg mh">
+              <img src="images/icon-04.svg" alt="Icon" />
+            </div>
+            <div>
+              <h4 class="ek yj go kk wm xb">Modern Technology</h4>
+              <p>Built with cutting-edge technology stack for performance, security, and scalability. Stay ahead with the latest tech innovations.</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg nh">
+              <img src="images/icon-05.svg" alt="Icon" />
+            </div>
+            <div>
+              <h4 class="ek yj go kk wm xb">Easy Integration</h4>
+              <p>Seamlessly integrate with your existing tools and workflows. Our platform works with your favorite tools and services.</p>
+            </div>
+          </div>
+
+          <!-- Small Features Item -->
+          <div class="animate_top kn to/3 tc cg oq">
+            <div class="tc wf xf cf ae cd rg oh">
+              <img src="images/icon-06.svg" alt="Icon" />
+            </div>
+            <div>
+              <h4 class="ek yj go kk wm xb">Secure & Reliable</h4>
+              <p>Enterprise-grade security and 99.9% uptime guarantee. Your data is protected with industry-standard security measures.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Small Features End ===== -->
+  </main>
+
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <!-- Footer Top -->
+      <div class="ji gp">
+        <div class="tc uf ap gg fp">
+          <div class="animate_top zd/2 to/4">
+            <a href="index.html">
+              <img src="images/logo-light.svg" alt="Logo" class="om" />
+              <img src="images/logo-dark.svg" alt="Logo" class="xc nm" />
+            </a>
+
+            <p class="lc fb">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+
+          <div class="vd ro tc sf rn un gg vn">
+            <div class="animate_top">
+              <h4 class="kk wm tj ec">Quick Links</h4>
+
+              <ul>
+                <li><a href="index.html" class="sc xl vb">Home</a></li>
+                <li><a href="about.html" class="sc xl vb">About</a></li>
+                <li><a href="services.html" class="sc xl vb">Services</a></li>
+                <li><a href="contact.html" class="sc xl vb">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Top -->
+
+      <!-- Footer Bottom -->
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+        <div class="animate_top">
+          <p>&copy; 2025 Base. All rights reserved.</p>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+    </div>
+  </footer>
+
+  <!-- ===== Footer End ===== -->
+  <script defer src="bundle.js"></script>
+</body>
+
+</html>
