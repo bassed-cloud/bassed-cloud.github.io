@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Base - Tailwind CSS Startup Template</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body x-data="{ page: 'careers', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+  <!-- ===== Header Start ===== -->
+  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+    @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
+    <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+      <div class="vd to/4 tc wf yf">
+        <a href="index.html">
+          <img class="om" src="images/logo-light.svg" alt="Logo Light" />
+          <img class="xc nm" src="images/logo-dark.svg" alt="Logo Dark" />
+        </a>
+
+        <!-- Hamburger Toggle BTN -->
+        <button class="po rc" @click="navigationOpen = !navigationOpen">
+          <span class="rc i pf re pd">
+            <span class="du-block h q vd yc">
+              <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+              <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+            </span>
+            <span class="du-block h q vd yc lf">
+              <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+              <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+            </span>
+          </span>
+        </button>
+        <!-- Hamburger Toggle BTN -->
+      </div>
+
+      <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+        <nav>
+          <ul class="tc _o sf yo cg ep">
+            <li><a href="index.html" class="xl">Home</a></li>
+            <li><a href="features.html" class="xl">Features</a></li>
+            <li><a href="about.html" class="xl">About</a></li>
+            <li><a href="services.html" class="xl">Services</a></li>
+            <li class="c i" x-data="{ dropdown: false }">
+              <a href="#" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown">
+                Pages
+                <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512">
+                  <path
+                    d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                </svg>
+              </a>
+
+              <!-- Dropdown Start -->
+              <ul class="a" :class="{ 'tc': dropdown }">
+                <li><a href="blog-grid.html" class="xl">Blog Grid</a></li>
+                <li><a href="blog-single.html" class="xl">Blog Single</a></li>
+                <li><a href="signin.html" class="xl">Sign In</a></li>
+                <li><a href="signup.html" class="xl">Sign Up</a></li>
+                <li><a href="404.html" class="xl">404</a></li>
+              </ul>
+              <!-- Dropdown End -->
+            </li>
+            <li><a href="contact.html" class="xl">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="tc wf ig pb no">
+          <a href="signin.html" class="ek pk xl">Sign In</a>
+          <a href="signup.html" class="lk gh dk rg tc wf xf _l gi hi">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Header End ===== -->
+
+  <main>
+    <!-- ===== Careers Start ===== -->
+    <section class="gj qp gr hj rp hr">
+      <div class="bb ze ki xn 2xl:ud-px-0">
+        <div class="tc sf yo zf kq">
+          <div class="animate_top">
+            <h1 class="ek vj pr kk wm nb gb mb-8">Join Our Team</h1>
+            <p class="bb on/5 wo/5 hq">We're always looking for talented individuals to join our growing team. Explore exciting career opportunities and help us build the future.</p>
+          </div>
+
+          <!-- Career Benefits -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-16">
+            <div class="animate_top text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                </svg>
+              </div>
+              <h3 class="ek vj kk wm nb qb">Remote Work</h3>
+              <p>Work from anywhere in the world with flexible hours and modern tools.</p>
+            </div>
+            <div class="animate_top text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2M21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9M19 21H5V3H14V8C14 8.6 14.4 9 15 9H19V21Z"></path>
+                </svg>
+              </div>
+              <h3 class="ek vj kk wm nb qb">Learning & Development</h3>
+              <p>Continuous learning opportunities with courses, conferences, and mentorship.</p>
+            </div>
+            <div class="animate_top text-center">
+              <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C15.31 2 18 4.69 18 8S15.31 14 12 14 6 11.31 6 8 8.69 2 12 2M12 16C16.42 16 20 17.79 20 20V22H4V20C4 17.79 7.58 16 12 16Z"></path>
+                </svg>
+              </div>
+              <h3 class="ek vj kk wm nb qb">Great Benefits</h3>
+              <p>Comprehensive health insurance, retirement plans, and wellness programs.</p>
+            </div>
+          </div>
+
+          <!-- Open Positions -->
+          <div class="animate_top">
+            <h2 class="ek vj kk wm nb gb mb-8 text-center">Open Positions</h2>
+            
+            <div class="space-y-6">
+              <!-- Job 1 -->
+              <div class="bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                  <div class="mb-4 md:mb-0">
+                    <h3 class="ek vj kk wm nb qb">Senior Frontend Developer</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">Remote • Full-time</p>
+                    <p>Join our frontend team to build beautiful and intuitive user interfaces using React, Vue.js, and modern web technologies.</p>
+                  </div>
+                  <a href="contact.html" class="ek rg lk ml il gi ri inline-block">Apply Now</a>
+                </div>
+              </div>
+
+              <!-- Job 2 -->
+              <div class="bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                  <div class="mb-4 md:mb-0">
+                    <h3 class="ek vj kk wm nb qb">Backend Engineer</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">Remote • Full-time</p>
+                    <p>Build scalable backend systems and APIs using Node.js, Python, and cloud technologies.</p>
+                  </div>
+                  <a href="contact.html" class="ek rg lk ml il gi ri inline-block">Apply Now</a>
+                </div>
+              </div>
+
+              <!-- Job 3 -->
+              <div class="bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                  <div class="mb-4 md:mb-0">
+                    <h3 class="ek vj kk wm nb qb">UX/UI Designer</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">Remote • Full-time</p>
+                    <p>Create amazing user experiences and beautiful interfaces for web and mobile applications.</p>
+                  </div>
+                  <a href="contact.html" class="ek rg lk ml il gi ri inline-block">Apply Now</a>
+                </div>
+              </div>
+
+              <!-- Job 4 -->
+              <div class="bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                  <div class="mb-4 md:mb-0">
+                    <h3 class="ek vj kk wm nb qb">Marketing Specialist</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">Remote • Full-time</p>
+                    <p>Drive growth through digital marketing strategies, content creation, and brand development.</p>
+                  </div>
+                  <a href="contact.html" class="ek rg lk ml il gi ri inline-block">Apply Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Careers End ===== -->
+  </main>
+
+  <!-- ===== Footer Start ===== -->
+  <footer>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <!-- Footer Top -->
+      <div class="vd ro tc sf rn un gg vn">
+        <div class="animate_top">
+          <h4 class="kk wm tj ec">Quick Links</h4>
+
+          <ul>
+            <li><a href="index.html" class="sc xl vb">Home</a></li>
+            <li><a href="product.html" class="sc xl vb">Product</a></li>
+            <li><a href="careers.html" class="sc xl vb">Careers</a></li>
+            <li><a href="pricing.html" class="sc xl vb">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <h4 class="kk wm tj ec">Services</h4>
+
+          <ul>
+            <li><a href="services.html" class="sc xl vb">Web Development</a></li>
+            <li><a href="services.html" class="sc xl vb">Graphics Design</a></li>
+            <li><a href="services.html" class="sc xl vb">Digital Marketing</a></li>
+            <li><a href="services.html" class="sc xl vb">Ui/Ux Design</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <h4 class="kk wm tj ec">Support</h4>
+
+          <ul>
+            <li><a href="about.html" class="sc xl vb">Company</a></li>
+            <li><a href="blog-grid.html" class="sc xl vb">Press media</a></li>
+            <li><a href="blog-grid.html" class="sc xl vb">Our Blog</a></li>
+            <li><a href="contact.html" class="sc xl vb">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Footer Top -->
+
+      <!-- Footer Bottom -->
+      <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+        <div class="animate_top">
+          <ul class="tc wf gg">
+            <li><a href="index.html" class="xl">English</a></li>
+            <li><a href="privacy-policy.html" class="xl">Privacy Policy</a></li>
+            <li><a href="contact.html" class="xl">Support</a></li>
+          </ul>
+        </div>
+
+        <div class="animate_top">
+          <p>&copy; 2025 Base. All rights reserved.</p>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+    </div>
+  </footer>
+
+  <!-- ===== Footer End ===== -->
+
+  <script defer src="bundle.js"></script>
+</body>
+
+</html>
