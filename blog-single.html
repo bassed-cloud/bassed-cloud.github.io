@@ -221,13 +221,47 @@
           </div>
 
           <div class="jn/2 so">
-            <div class="animate_top fb">
-              <form action="#">
+            <div class="animate_top fb" x-data="{ 
+              searchQuery: '', 
+              searchResults: [],
+              isSearching: false,
+              performSearch() {
+                this.isSearching = true;
+                const query = this.searchQuery.toLowerCase().trim();
+                
+                if (query === '') {
+                  this.searchResults = [];
+                  this.isSearching = false;
+                  return;
+                }
+                
+                // Simulate search results
+                const allContent = [
+                  { title: 'Free advertising for your online business', url: 'blog-single.html', type: 'Blog Post' },
+                  { title: '9 simple ways to improve your design skills', url: 'blog-single.html', type: 'Blog Post' },
+                  { title: 'Tips to quickly improve your coding speed', url: 'blog-single.html', type: 'Blog Post' },
+                  { title: 'Home Page', url: 'index.html', type: 'Page' },
+                  { title: 'Sign In', url: 'signin.html', type: 'Page' },
+                  { title: 'Sign Up', url: 'signup.html', type: 'Page' },
+                  { title: 'UI/UX Design Services', url: 'index.html#features', type: 'Service' },
+                  { title: 'Web Development', url: 'index.html#features', type: 'Service' },
+                  { title: 'Digital Marketing', url: 'index.html#features', type: 'Service' }
+                ];
+                
+                this.searchResults = allContent.filter(item => 
+                  item.title.toLowerCase().includes(query) || 
+                  item.type.toLowerCase().includes(query)
+                );
+                
+                setTimeout(() => { this.isSearching = false; }, 300);
+              }
+            }">
+              <form @submit.prevent="performSearch()">
                 <div class="i">
-                  <input type="text" placeholder="Search Here..."
+                  <input type="text" placeholder="Search Here..." x-model="searchQuery" @input="performSearch()"
                     class="vd sm _g ch pm vk xm rg gm dm/40 dn/40 li mi" />
 
-                  <button class="h r q _h">
+                  <button type="submit" class="h r q _h">
                     <svg class="th ul ml il" width="21" height="21" viewBox="0 0 21 21" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -236,6 +270,29 @@
                   </button>
                 </div>
               </form>
+              
+              <!-- Search Results -->
+              <div x-show="searchQuery.length > 0" class="mt-4 bg-white dark:bg-blacksection border border-stroke dark:border-strokedark rounded-md p-4" style="display: none;">
+                <div x-show="isSearching" class="text-center py-2">
+                  <span class="text-gray-500">Searching...</span>
+                </div>
+                
+                <div x-show="!isSearching && searchResults.length === 0 && searchQuery.length > 0" class="text-center py-2">
+                  <span class="text-gray-500">No results found</span>
+                </div>
+                
+                <div x-show="!isSearching && searchResults.length > 0">
+                  <h4 class="font-semibold mb-2">Search Results:</h4>
+                  <template x-for="result in searchResults" :key="result.url">
+                    <div class="border-b border-gray-200 dark:border-gray-700 py-2 last:border-b-0">
+                      <a :href="result.url" class="block hover:text-blue-600 dark:hover:text-blue-400">
+                        <div class="font-medium" x-text="result.title"></div>
+                        <div class="text-sm text-gray-500" x-text="result.type"></div>
+                      </a>
+                    </div>
+                  </template>
+                </div>
+              </div>
             </div>
 
             <div class="animate_top fb">
@@ -445,7 +502,7 @@
               <h4 class="kk wm tj ec">Newsletter</h4>
               <p class="ac qe">Subscribe to receive future updates</p>
 
-              <form action="https://formbold.com/s/unique_form_id" method="POST">
+              <form action="#" method="POST" onsubmit="alert('Thank you for subscribing!'); return false;">
                 <div class="i">
                   <input type="text" placeholder="Email address" class="vd sm _g ch pm vk xm rg gm dm dn gi mi" />
 
